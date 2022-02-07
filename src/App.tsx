@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import axios from "axios";
+import Photo from "./components/Photo";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface AppProps {}
+
+interface AppState {
+  photoData: {
+    title: string | undefined;
+    date: string | undefined;
+    hdurl: string | undefined;
+    url: string | undefined;
+  };
+}
+
+class App extends React.Component<AppProps, AppState> {
+  constructor(props: AppProps) {
+    super(props);
+    this.state = {
+      photoData: {
+        title: undefined,
+        date: undefined,
+        hdurl: undefined,
+        url: undefined,
+      },
+    };
+  }
+
+  async componentDidMount() {
+    const apiKey = "";
+    const result = await axios.get(
+      `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`
+    );
+    this.setState({ photoData: result.data });
+  }
+
+  render() {
+    return <Photo photoData={this.state.photoData} />;
+  }
 }
 
 export default App;
