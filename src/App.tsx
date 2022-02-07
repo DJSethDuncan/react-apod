@@ -28,7 +28,8 @@ class App extends React.Component<AppProps, AppState> {
   }
 
   async componentDidMount() {
-    const apiKey = "";
+    const apiKey = process.env.REACT_APP_NASA_API_TOKEN;
+    console.log("env ->", process.env);
     const result = await axios.get(
       `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`
     );
