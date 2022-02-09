@@ -19,6 +19,7 @@ class Video extends React.Component<VideoProps, VideoState> {
           title={this.props.resultData.title}
           src={this.props.resultData.url}
         ></iframe>
+        <div>{this.props.resultData.explanation}</div>
       </div>
     );
   }

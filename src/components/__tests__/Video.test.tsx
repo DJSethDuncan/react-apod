@@ -9,6 +9,7 @@ describe("Video test", () => {
     hdurl: "abc123",
     url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     media_type: "video",
+    explanation: "video explanation",
   };
 
   it("shows the expected title", () => {
@@ -20,6 +21,12 @@ describe("Video test", () => {
   it("shows the expected date", () => {
     render(<Video resultData={mockVideoData} />);
     const date = screen.getByText(mockVideoData.date);
+    expect(date).toBeInTheDocument();
+  });
+
+  it("shows the expected explanation", () => {
+    render(<Video resultData={mockVideoData} />);
+    const date = screen.getByText(mockVideoData.explanation);
     expect(date).toBeInTheDocument();
   });
 

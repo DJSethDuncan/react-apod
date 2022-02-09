@@ -16,11 +16,12 @@ class App extends React.Component<AppProps, AppState> {
     super(props);
     this.state = {
       resultData: {
-        title: undefined,
-        date: undefined,
-        hdurl: undefined,
-        url: undefined,
+        title: "",
+        date: "",
+        hdurl: "",
+        url: "",
         media_type: "image",
+        explanation: "",
       },
     };
   }
