@@ -1,9 +1,30 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Photo from "../Photo";
+import Video from "../Video";
 
 describe("Video test", () => {
-  it("renders", () => {
-    expect(1).toBe(1);
+  const mockVideoData = {
+    title: "mock-title",
+    date: "2022-02-08",
+    hdurl: "abc123",
+    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  };
+
+  it("shows the expected title", () => {
+    render(<Video resultData={mockVideoData} />);
+    const title = screen.getByText(mockVideoData.title);
+    expect(title).toBeInTheDocument();
+  });
+
+  it("shows the expected date", () => {
+    render(<Video resultData={mockVideoData} />);
+    const date = screen.getByText(mockVideoData.date);
+    expect(date).toBeInTheDocument();
+  });
+
+  it("loads an image with the correct src", () => {
+    render(<Video resultData={mockVideoData} />);
+    const video = screen.getByTitle(mockVideoData.title);
+    expect(video).toBeVisible();
   });
 });

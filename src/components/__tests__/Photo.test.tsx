@@ -12,13 +12,13 @@ describe("Photo test", () => {
 
   it("shows the expected title", () => {
     render(<Photo resultData={mockPhotoData} />);
-    const title = screen.getByText("mock-title");
+    const title = screen.getByText(mockPhotoData.title);
     expect(title).toBeInTheDocument();
   });
 
   it("shows the expected date", () => {
     render(<Photo resultData={mockPhotoData} />);
-    const date = screen.getByText("2022-02-08");
+    const date = screen.getByText(mockPhotoData.date);
     expect(date).toBeInTheDocument();
   });
 
