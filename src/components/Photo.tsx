@@ -1,12 +1,8 @@
 import * as React from "react";
+import ResultData from "../types/ResultData";
 
 interface PhotoProps {
-  resultData: {
-    title: string | undefined;
-    date: string | undefined;
-    hdurl: string | undefined;
-    url: string | undefined;
-  };
+  resultData: ResultData;
 }
 
 interface PhotoState {}

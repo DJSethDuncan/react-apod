@@ -1,13 +1,8 @@
 import * as React from "react";
 import { Component } from "react";
+import ResultData from "../types/ResultData";
 interface VideoProps {
-  resultData: {
-    // @TODO: convert this type to an importable type
-    title: string | undefined;
-    date: string | undefined;
-    hdurl: string | undefined;
-    url: string | undefined;
-  };
+  resultData: ResultData;
 }
 
 interface VideoState {}
