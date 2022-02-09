@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Component } from "react";
 import ResultData from "../types/ResultData";
 interface VideoProps {
   resultData: ResultData;
