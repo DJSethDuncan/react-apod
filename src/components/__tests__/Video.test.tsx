@@ -8,6 +8,7 @@ describe("Video test", () => {
     date: "2022-02-08",
     hdurl: "abc123",
     url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    media_type: "video",
   };
 
   it("shows the expected title", () => {

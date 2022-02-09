@@ -8,6 +8,7 @@ describe("Photo test", () => {
     date: "2022-02-08",
     hdurl: "abc123",
     url: "abc123",
+    media_type: "image",
   };
 
   it("shows the expected title", () => {

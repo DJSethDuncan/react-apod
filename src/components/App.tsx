@@ -2,18 +2,13 @@ import React from "react";
 import axios from "axios";
 import Photo from "./Photo";
 import Video from "./Video";
+import ResultData from "../types/ResultData";
 import "../css/App.css";
 
 interface AppProps {}
 
 interface AppState {
-  resultData: {
-    title: string | undefined;
-    date: string | undefined;
-    hdurl: string | undefined;
-    url: string | undefined;
-  };
-  resultType: string | null; // @TODO: make this an enum
+  resultData: ResultData;
 }
 
 class App extends React.Component<AppProps, AppState> {
@@ -25,8 +20,8 @@ class App extends React.Component<AppProps, AppState> {
         date: undefined,
         hdurl: undefined,
         url: undefined,
+        media_type: "image",
       },
-      resultType: null,
     };
   }
 
@@ -36,16 +31,13 @@ class App extends React.Component<AppProps, AppState> {
       `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`
     );
     this.setState({ resultData: result.data });
-    this.setState({
-      resultType: result.data.url.match(/youtube.com/i) ? "video" : "photo",
-    });
   }
 
   render() {
     return (
       <div>
         <h1>APOD</h1>
-        {this.state.resultType === "photo" ? (
+        {this.state.resultData.media_type === "image" ? (
           <Photo resultData={this.state.resultData} />
         ) : (
           <Video resultData={this.state.resultData} />
