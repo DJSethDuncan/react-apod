@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
-import Photo from "./components/Photo";
-import Video from "./components/Video";
-import "./App.css";
+import Photo from "./Photo";
+import Video from "./Video";
+import "../css/App.css";
 
 interface AppProps {}
 
@@ -41,7 +41,6 @@ class App extends React.Component<AppProps, AppState> {
     });
   }
 
-  // @TODO: handle when the URL is a youtube link instead of a photo
   render() {
     return (
       <div>
