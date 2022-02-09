@@ -35,8 +35,14 @@ class App extends React.Component<AppProps, AppState> {
     this.setState({ photoData: result.data });
   }
 
+  // @TODO: handle when the URL is a youtube link instead of a photo
   render() {
-    return <Photo photoData={this.state.photoData} />;
+    return (
+      <div>
+        <h1>APOD</h1>
+        <Photo photoData={this.state.photoData} />
+      </div>
+    );
   }
 }
 

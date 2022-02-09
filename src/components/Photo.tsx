@@ -15,11 +15,15 @@ interface PhotoState {}
 class Photo extends React.Component<PhotoProps, PhotoState> {
   render() {
     return (
-      <div>
+      <div className="photoContainer">
         <div>{this.props.photoData.title}</div>
         <div>{this.props.photoData.date}</div>
         <div>
-          <img src={this.props.photoData.url} alt="title" />
+          <img
+            src={this.props.photoData.url}
+            title="APOD Image"
+            alt={this.props.photoData.title}
+          />
         </div>
       </div>
     );
