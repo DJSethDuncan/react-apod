@@ -1,8 +1,7 @@
 import * as React from "react";
-import { Component } from "react";
 
 interface PhotoProps {
-  photoData: {
+  resultData: {
     title: string | undefined;
     date: string | undefined;
     hdurl: string | undefined;
@@ -16,13 +15,13 @@ class Photo extends React.Component<PhotoProps, PhotoState> {
   render() {
     return (
       <div className="photoContainer">
-        <div>{this.props.photoData.title}</div>
-        <div>{this.props.photoData.date}</div>
+        <div>{this.props.resultData.title}</div>
+        <div>{this.props.resultData.date}</div>
         <div>
           <img
-            src={this.props.photoData.url}
+            src={this.props.resultData.url}
             title="APOD Image"
-            alt={this.props.photoData.title}
+            alt={this.props.resultData.title}
           />
         </div>
       </div>

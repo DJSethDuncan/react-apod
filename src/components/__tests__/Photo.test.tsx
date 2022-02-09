@@ -11,25 +11,25 @@ describe("Photo test", () => {
   };
 
   it("shows the expected title", () => {
-    render(<Photo photoData={mockPhotoData} />);
+    render(<Photo resultData={mockPhotoData} />);
     const title = screen.getByText("mock-title");
     expect(title).toBeInTheDocument();
   });
 
   it("shows the expected date", () => {
-    render(<Photo photoData={mockPhotoData} />);
+    render(<Photo resultData={mockPhotoData} />);
     const date = screen.getByText("2022-02-08");
     expect(date).toBeInTheDocument();
   });
 
   it("loads an image with the correct src", () => {
-    render(<Photo photoData={mockPhotoData} />);
+    render(<Photo resultData={mockPhotoData} />);
     const img = screen.getByTitle("APOD Image");
     expect(img).toBeVisible();
   });
 
   it("shows the title as the alt text", () => {
-    render(<Photo photoData={mockPhotoData} />);
+    render(<Photo resultData={mockPhotoData} />);
     const img = screen.getByAltText(mockPhotoData.title);
     expect(img).toBeInTheDocument();
   });
