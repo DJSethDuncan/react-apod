@@ -10,3 +10,9 @@ Note: This is using older class-based React components
 - `touch .env`
 - Add NASA API to `.env` (use `.env.example` as a template)
 - `npm start`
+
+## Tests
+
+Found in `src/components/_tests_`
+
+- `npm run test`
