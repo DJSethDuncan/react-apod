@@ -1,6 +1,5 @@
-import React from "react";
 import { cleanup, render, screen } from "@testing-library/react";
-import Photo from "../Photo";
+import { Photo } from "../Photo";
 
 const mockPhotoData = {
   title: "mock-title",

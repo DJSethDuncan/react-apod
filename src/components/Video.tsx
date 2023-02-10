@@ -4,9 +4,7 @@ interface VideoProps {
   resultData: ResultData;
 }
 
-interface VideoState {}
-
-class Video extends React.Component<VideoProps, VideoState> {
+export class Video extends React.Component<VideoProps> {
   render() {
     return (
       <div>
@@ -24,5 +22,3 @@ class Video extends React.Component<VideoProps, VideoState> {
     );
   }
 }
-
-export default Video;

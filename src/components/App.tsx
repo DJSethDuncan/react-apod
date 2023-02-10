@@ -1,7 +1,7 @@
 import React from "react";
-import axios from "axios";
-import Photo from "./Photo";
-import Video from "./Video";
+import { Photo } from "./Photo";
+import { Video } from "./Video";
+import { getApiData } from "../repositories/utils";
 import ResultData from "../types/ResultData";
 import "../css/App.css";
 
@@ -27,23 +27,33 @@ class App extends React.Component<AppProps, AppState> {
   }
 
   async componentDidMount() {
-    const apiKey = process.env.REACT_APP_NASA_API_TOKEN;
-    const result = await axios.get(
-      `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`
-    );
+    const result = await getApiData();
     this.setState({ resultData: result.data });
+  }
+
+  // cleanup async data calls on unmount
+  componentWillUnmount() {
+    this.setState = () => {
+      return;
+    };
   }
 
   render() {
     return (
-      <div>
-        <h1>APOD</h1>
-        {this.state.resultData.media_type === "image" ? (
-          <Photo resultData={this.state.resultData} />
+      <>
+        {!process.env.REACT_APP_NASA_API_TOKEN ? (
+          <p>REACT_APP_NASA_API_TOKEN missing from .env</p>
         ) : (
-          <Video resultData={this.state.resultData} />
+          <div>
+            <h1>APOD</h1>
+            {this.state.resultData.media_type === "image" ? (
+              <Photo resultData={this.state.resultData} />
+            ) : (
+              <Video resultData={this.state.resultData} />
+            )}
+          </div>
         )}
-      </div>
+      </>
     );
   }
 }

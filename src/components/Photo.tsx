@@ -5,9 +5,7 @@ interface PhotoProps {
   resultData: ResultData;
 }
 
-interface PhotoState {}
-
-class Photo extends React.Component<PhotoProps, PhotoState> {
+export class Photo extends React.Component<PhotoProps> {
   render() {
     return (
       <div className="photoContainer">
@@ -29,5 +27,3 @@ class Photo extends React.Component<PhotoProps, PhotoState> {
     );
   }
 }
-
-export default Photo;
