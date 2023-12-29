@@ -9,7 +9,7 @@ interface PhotoProps {
 export class Photo extends React.Component<PhotoProps> {
   render() {
     return (
-      <Box w="50%" boxShadow="dark-lg" p="6" rounded="md" bg="white">
+      <Box boxShadow="dark-lg" p="6" rounded="md" bg="white" w="50%" maxW={600}>
         <Box rounded="sm">
           {this.props.resultData.url && this.props.resultData.title ? (
             <Image

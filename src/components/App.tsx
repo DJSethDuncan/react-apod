@@ -46,7 +46,14 @@ class App extends React.Component<AppProps, AppState> {
         {!process.env.REACT_APP_NASA_API_TOKEN ? (
           <p>REACT_APP_NASA_API_TOKEN missing from .env</p>
         ) : (
-          <Container width="100%" height="100%" bg="gray.300" centerContent>
+          <Container
+            width="100%"
+            height="100%"
+            bg="gray.300"
+            overflow="auto"
+            centerContent
+            pb={100}
+          >
             <Text fontSize="3xl" color="gray.600" my={35}>
               NASA Astronomy Photo of the Day
             </Text>
