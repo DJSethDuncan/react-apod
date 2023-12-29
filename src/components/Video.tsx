@@ -1,5 +1,5 @@
 import ResultData from "../types/ResultData";
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 
 interface VideoProps {
   resultData: ResultData;
