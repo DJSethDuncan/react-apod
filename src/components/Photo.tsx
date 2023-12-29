@@ -1,4 +1,3 @@
-import * as React from "react";
 import ResultData from "../types/ResultData";
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
 
@@ -6,7 +5,6 @@ interface PhotoProps {
   resultData: ResultData;
 }
 
-// export class Photo extends React.Component<PhotoProps> {
 export const Photo = (props: PhotoProps) => (
   <Box boxShadow="dark-lg" p="6" rounded="md" bg="white" w="50%" maxW={600}>
     <Box rounded="sm">
