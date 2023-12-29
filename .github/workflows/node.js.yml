@@ -3,9 +3,6 @@
 
 name: Node.js CI
 
-env:
-  NAME: "REACT APOD BUILDER"
-
 on:
   push:
     branches: ["main"]
@@ -32,9 +29,5 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - name: Print env var
-        run: echo "Hello $NAME. $BUILD."
-        env:
-          BUILD: "We are currently running the Build job"
       - run: npm ci
       - run: npm test
