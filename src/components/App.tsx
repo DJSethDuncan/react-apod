@@ -3,11 +3,7 @@ import { Photo } from "./Photo";
 import { Video } from "./Video";
 import { getApiData } from "../repositories/utils";
 import ResultData from "../types/ResultData";
-import {
-  ChakraBaseProvider,
-  extendBaseTheme,
-  theme as chakraTheme,
-} from "@chakra-ui/react";
+import { ChakraBaseProvider, Text } from "@chakra-ui/react";
 import { Container } from "@chakra-ui/react";
 import "../css/App.css";
 
@@ -16,8 +12,6 @@ interface AppProps {}
 interface AppState {
   resultData: ResultData;
 }
-
-const { Button } = chakraTheme.components;
 
 class App extends React.Component<AppProps, AppState> {
   constructor(props: AppProps) {
@@ -46,20 +40,16 @@ class App extends React.Component<AppProps, AppState> {
     };
   }
 
-  theme = extendBaseTheme({
-    components: {
-      Button,
-    },
-  });
-
   render() {
     return (
-      <ChakraBaseProvider theme={this.theme}>
+      <ChakraBaseProvider>
         {!process.env.REACT_APP_NASA_API_TOKEN ? (
           <p>REACT_APP_NASA_API_TOKEN missing from .env</p>
         ) : (
-          <Container bg="blue.600" color="white" centerContent>
-            <h1>APOD</h1>
+          <Container width="100%" height="100%" bg="gray.300" centerContent>
+            <Text fontSize="3xl" color="gray.600" my={35}>
+              NASA Astronomy Photo of the Day
+            </Text>
             {this.state.resultData.media_type === "image" ? (
               <Photo resultData={this.state.resultData} />
             ) : (
