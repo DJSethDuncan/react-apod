@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Photo } from "./Photo";
 import { Video } from "./Video";
+import { LoadingShimmer } from "./LoadingShimmer";
 import { getApiData } from "../repositories/utils";
 import ResultData from "../types/ResultData";
 import { ChakraBaseProvider, Text } from "@chakra-ui/react";
@@ -9,25 +10,25 @@ import "../css/App.css";
 
 export const App = () => {
   const [apodData, setApodData] = useState<ResultData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getApiResponse = async () => {
-      const { data } = await getApiData();
-      const { title, date, hdurl, url, media_type, explanation } = data;
-      const newApodData = {
-        title,
-        date,
-        hdurl,
-        url,
-        media_type,
-        explanation,
-      };
-      setApodData(newApodData);
+      try {
+        const { data } = await getApiData();
+        const { title, date, hdurl, url, media_type, explanation } = data;
+        setApodData({ title, date, hdurl, url, media_type, explanation });
+      } catch {
+        // apodData stays null, so the "Unable to retrieve" message renders.
+      } finally {
+        setIsLoading(false);
+      }
     };
     getApiResponse();
-  });
+  }, []);
 
   const MediaComponent = () => {
+    if (isLoading) return <LoadingShimmer />;
     if (!apodData) return <>Unable to retrieve data from API</>;
     if (apodData.media_type === "image") {
       return <Photo resultData={apodData} />;
